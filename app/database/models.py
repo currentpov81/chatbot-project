@@ -26,8 +26,8 @@ class User(Base):
     total_chats = Column(Integer, default=0)
     report_count = Column(Integer, default=0)
 
-    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
-    last_seen = Column(DateTime, default=lambda: datetime.now(timezone.utc))
+    created_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc))
+    last_seen = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc))
 
 
 class Report(Base):
@@ -37,4 +37,4 @@ class Report(Base):
     reporter_id = Column(BigInteger, nullable=False)
     reported_id = Column(BigInteger, nullable=False)
     reason = Column(String, nullable=True)
-    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
+    created_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc))
